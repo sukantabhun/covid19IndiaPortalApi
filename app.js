@@ -28,7 +28,7 @@ const districtObjToResponseObj = dbObj => {
     cases: dbObj.cases,
     cured: dbObj.cured,
     active: dbObj.active,
-    deaths: dbObj.deaths
+    deaths: dbObj.deaths,
   }
 }
 const authenticateToken = (request, response, next) => {
@@ -133,7 +133,7 @@ app.post('/districts/', authenticateToken, async (request, response) => {
           '${deaths}'
         )`
   await db.run(createDistrictQuery)
-  response.send(`District successfully Added`)
+  response.send(`District Successfully Added`)
 })
 
 //API 5
@@ -187,7 +187,7 @@ app.put(
       cured = ${cured},
       active = ${active},
       deaths = ${deaths}
-      WHERE state_id == ${districtId};`
+      WHERE district_id == ${districtId};`
 
     await db.run(updateDistrictQuery)
     response.send('District Details Updated')
